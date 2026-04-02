@@ -17,5 +17,17 @@ namespace TH_502045_1.Pages
         {
             AvailableRoutes = await _context.Routes.Where(r => r.IsActive).ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostSelectRouteAsync(int routeId)
+        {
+            var selectedRoute = await _context.Routes.FindAsync(routeId);
+
+            if (selectedRoute == null)
+                return Page();
+
+            HttpContext.Session.SetInt32("SelectedRouteId", routeId);
+
+            return RedirectToPage("./SelectPayment");
+        }
     }
 }

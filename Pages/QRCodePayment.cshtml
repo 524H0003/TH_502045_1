@@ -1,0 +1,60 @@
+﻿@page
+@model TH_502045_1.Pages.QRCodePaymentModel
+@{
+    ViewData["Title"] = "Thanh toán QR Code";
+}
+
+<div class="container text-center">
+    <div class="card shadow-lg border-0 mx-auto" style="max-width: 500px;">
+        <div class="card-header bg-primary text-white py-3">
+            <h4 class="mb-0 text-uppercase">Thanh toán qua Ví điện tử</h4>
+        </div>
+        <div class="card-body p-4">
+            <p class="text-muted">Vui lòng quét mã bên dưới bằng ứng dụng ngân hàng hoặc ví điện tử (Momo, VNPay, ZaloPay) </p>
+            
+            <div class="my-4 p-3 border d-inline-block bg-white shadow-sm">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=TicketPayment_@Model.TotalAmount" 
+                     alt="QR Code Thanh Toán" class="img-fluid" />
+            </div>
+
+            <div class="alert alert-warning py-2">
+                <h5 class="mb-1">Tổng tiền: <span class="text-danger fw-bold">@Model.TotalAmount.ToString("N0") VNĐ</span></h5>
+                <small>Vé: @Model.DestinationName | Số lượng: @Model.Quantity</small>
+            </div>
+
+            <div class="progress mb-3" style="height: 10px;">
+                <div id="paymentTimer" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+            </div>
+            <p class="small text-muted">Giao dịch sẽ hết hạn sau <span id="timeLeft">60</span> giây</p>
+        </div>
+        
+        <div class="card-footer bg-light py-3">
+            <form method="post" asp-page-handler="Confirm">
+                <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow-sm">
+                    XÁC NHẬN ĐÃ QUÉT MÃ 
+                </button>
+            </form>
+            <a asp-page="./SelectPayment" class="btn btn-link text-decoration-none mt-2">Hủy giao dịch</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            let timeLeft = 60;
+            let timer = setInterval(function () {
+                timeLeft--;
+                $("#timeLeft").text(timeLeft);
+                let progressWidth = (timeLeft / 60) * 100;
+                $("#paymentTimer").css("width", progressWidth + "%");
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert("Giao dịch đã hết hạn!");
+                    window.location.href = "./Index";
+                }
+            }, 1000);
+        });
+    </script>
+}

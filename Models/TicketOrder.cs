@@ -2,13 +2,18 @@
 {
     public class TicketOrder
     {
-        public int OrderId { get; set; }
-        public int RouteId { get; set; }
+        public int TicketOrderId { get; set; }
         public Route? Route { get; set; }
         public DateTime PurchaseDate { get; set; }
         public string PaymentMethod { get; set; } = string.Empty;
         public decimal TotalAmount { get; set; }
-        public string? TransactionStatus { get; set; }
+
+        /*
+         * 0: not transferred
+         * 1: transferred
+         * 9: something went wrong
+         */
+        public short? isTransferred { get; set; }
         public string? BarcodeData { get; set; }
     }
 }

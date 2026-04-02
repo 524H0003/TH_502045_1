@@ -12,21 +12,47 @@ namespace TH_502045_1.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Route>(entity =>
-            {
-                entity.HasKey(e => e.RouteId);
-                entity.Property(e => e.DestinationName).IsRequired().HasMaxLength(200);
-                entity.Property(e => e.Price).HasColumnType("decimal(18,2)");
-            });
+            base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<TicketOrder>(entity =>
-            {
-                entity.HasKey(e => e.OrderId);
-                entity.Property(e => e.PaymentMethod).IsRequired();
-                entity.Property(e => e.TotalAmount).HasColumnType("decimal(18,2)");
-
-                entity.HasOne(d => d.Route).WithMany().HasForeignKey(d => d.RouteId);
-            });
+            modelBuilder
+                .Entity<Route>()
+                .HasData(
+                    new Route
+                    {
+                        RouteId = 1,
+                        DestinationName = "Ga Bến Thành",
+                        Price = 15000,
+                        IsActive = true,
+                    },
+                    new Route
+                    {
+                        RouteId = 2,
+                        DestinationName = "Ga Nhà hát Thành phố",
+                        Price = 15000,
+                        IsActive = true,
+                    },
+                    new Route
+                    {
+                        RouteId = 3,
+                        DestinationName = "Ga Ba Son",
+                        Price = 15000,
+                        IsActive = true,
+                    },
+                    new Route
+                    {
+                        RouteId = 4,
+                        DestinationName = "Ga Tân Cảng",
+                        Price = 20000,
+                        IsActive = true,
+                    },
+                    new Route
+                    {
+                        RouteId = 5,
+                        DestinationName = "Ga Suối Tiên",
+                        Price = 25000,
+                        IsActive = true,
+                    }
+                );
         }
     }
 }

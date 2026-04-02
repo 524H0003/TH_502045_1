@@ -12,7 +12,7 @@ using TH_502045_1.Models;
 namespace TH_502045_1.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20260402035804_InitialCreate")]
+    [Migration("20260402044640_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -35,8 +35,7 @@ namespace TH_502045_1.Migrations
 
                     b.Property<string>("DestinationName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -47,15 +46,52 @@ namespace TH_502045_1.Migrations
                     b.HasKey("RouteId");
 
                     b.ToTable("Routes");
+
+                    b.HasData(
+                        new
+                        {
+                            RouteId = 1,
+                            DestinationName = "Ga Bến Thành",
+                            IsActive = true,
+                            Price = 15000m
+                        },
+                        new
+                        {
+                            RouteId = 2,
+                            DestinationName = "Ga Nhà hát Thành phố",
+                            IsActive = true,
+                            Price = 15000m
+                        },
+                        new
+                        {
+                            RouteId = 3,
+                            DestinationName = "Ga Ba Son",
+                            IsActive = true,
+                            Price = 15000m
+                        },
+                        new
+                        {
+                            RouteId = 4,
+                            DestinationName = "Ga Tân Cảng",
+                            IsActive = true,
+                            Price = 20000m
+                        },
+                        new
+                        {
+                            RouteId = 5,
+                            DestinationName = "Ga Suối Tiên",
+                            IsActive = true,
+                            Price = 25000m
+                        });
                 });
 
             modelBuilder.Entity("TH_502045_1.Models.TicketOrder", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("TicketOrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketOrderId"));
 
                     b.Property<string>("BarcodeData")
                         .HasColumnType("nvarchar(max)");
@@ -67,16 +103,16 @@ namespace TH_502045_1.Migrations
                     b.Property<DateTime>("PurchaseDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RouteId")
+                    b.Property<int?>("RouteId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("TransactionStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<short?>("isTransferred")
+                        .HasColumnType("smallint");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("TicketOrderId");
 
                     b.HasIndex("RouteId");
 
@@ -87,9 +123,7 @@ namespace TH_502045_1.Migrations
                 {
                     b.HasOne("TH_502045_1.Models.Route", "Route")
                         .WithMany()
-                        .HasForeignKey("RouteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RouteId");
 
                     b.Navigation("Route");
                 });

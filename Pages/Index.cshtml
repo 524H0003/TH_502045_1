@@ -5,6 +5,21 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h2 class="mb-4">Vui lòng chọn điểm đến của bạn</h2>
+    
+    <div class="row g-3">
+        @foreach (var route in Model.AvailableRoutes)
+        {
+            <div class="col-md-4">
+                <form method="post" asp-page-handler="SelectRoute">
+                    <input type="hidden" name="routeId" value="@route.RouteId" />
+                    <button type="submit" class="btn btn-outline-primary btn-kiosk w-100 shadow-sm">
+                        <div class="fw-bold">@route.DestinationName</div>
+                        <hr />
+                        <div class="text-danger">@route.Price.ToString("N0") VNĐ</div>
+                    </button>
+                </form>
+            </div>
+        }
+    </div>
 </div>

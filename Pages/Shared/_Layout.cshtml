@@ -1,52 +1,99 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TH_502045_1</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] - BenThanh Metro Smart Ticketing</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/TH_502045_1.styles.css" asp-append-version="true" />
+    <style>
+        /* Giả lập giao diện phần cứng máy bán vé (Kiosk Mode) */
+        body {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100dvh;
+
+        }
+
+        .kiosk-container {
+            border: 15px solid #bdc3c7; /* Viền ngoài máy ATM */
+            border-radius: 20px;
+            background-color: #ffffff;
+            color: #333;
+            min-height: 80vh;
+            margin-top: 20px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            padding: 0px;
+            margin: auto 0px;
+        }
+
+        .kiosk-header {
+            background: linear-gradient(90deg, #0055a4 0%, #003366 100%); /* Màu đặc trưng Metro */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #f1c40f;
+        }
+
+        .kiosk-screen {
+            padding: 30px;
+            min-height: 500px;
+            height: 100%;
+        }
+
+        .system-status-bar {
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Hiệu ứng nút bấm lớn cho màn hình cảm ứng */
+        .btn-kiosk {
+            padding: 20px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            transition: transform 0.1s;
+        }
+
+        .btn-kiosk:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">TH_502045_1</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <div class="container h-100">
+        <div class="row justify-content-center h-100">
+            <div class="col-md-10 kiosk-container flex-column d-flex">
+                
+                <header class="kiosk-header">
+                    <h1 class="display-5 fw-bold">METRO BẾN THÀNH - SUỐI TIÊN</h1>
+                    <p class="mb-0">Smart Ticketing Vendor Machine v1.0</p> 
+                </header>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - TH_502045_1 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                <main role="main" class="kiosk-screen flex-grow-1">
+                    @RenderBody()
+                </main>
+
+                <footer class="system-status-bar d-flex justify-content-between">
+                    <div>
+                        <strong>Trạng thái:</strong> <span class="text-success">Sẵn sàng phục vụ</span> 
+                    </div>
+                    <div>
+                        @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
+                    </div>
+                </footer>
+
+            </div>
         </div>
-    </footer>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

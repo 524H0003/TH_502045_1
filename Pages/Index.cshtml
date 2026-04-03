@@ -1,26 +1,88 @@
-﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
+﻿@page 
+@model IndexModel 
+@{ ViewData["Title"] = "Home page"; }
 
-<div class="text-center">
-	<h2 class="mb-4">Vui lòng chọn điểm đến của bạn</h2>
-
-	<div class="row g-3">
-		@foreach (var route in Model.AvailableRoutes) {
-		<div class="col-md-4">
-			<form method="post" asp-page-handler="SelectRoute">
-				<input type="hidden" name="routeId" value="@route.RouteId" />
-				<button
-					type="submit"
-					class="btn btn-outline-primary btn-kiosk w-100 shadow-sm">
-					<div class="fw-bold">@route.DestinationName</div>
-					<hr />
-					<div class="text-danger">@route.Price.ToString("N0") VNĐ</div>
-				</button>
-			</form>
+<div>
+	<div class="card border-0 shadow-sm mb-4">
+		<div class="card-body p-4">
+			<div class="d-flex align-items-start gap-3">
+				<div
+					class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center flex-shrink-0"
+					style="width: 3rem; height: 3rem">
+					<i class="fa-solid fa-circle-info text-primary fs-5"></i>
+				</div>
+				<div class="flex-grow-1">
+					<h5 class="fw-bold text-primary mb-3" style="font-size: 1.6rem">
+						Hướng dẫn mua vé
+					</h5>
+					<div class="d-flex flex-column gap-2">
+						<div class="d-flex align-items-start gap-2">
+							<span
+								class="badge bg-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
+								style="width: 1.5rem; height: 1.5rem; font-size: 0.75rem">
+								1
+							</span>
+							<span style="font-size: 1.2rem">Chọn ga đến</span>
+						</div>
+						<div class="d-flex align-items-start gap-2">
+							<span
+								class="badge bg-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
+								style="width: 1.5rem; height: 1.5rem; font-size: 0.75rem">
+								2
+							</span>
+							<span style="font-size: 1.2rem">
+								Xem giá vé tương ứng với quãng đường
+							</span>
+						</div>
+						<div class="d-flex align-items-start gap-2">
+							<span
+								class="badge bg-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
+								style="width: 1.5rem; height: 1.5rem; font-size: 0.75rem">
+								3
+							</span>
+							<span style="font-size: 1.2rem">Chọn phương thức thanh toán</span>
+						</div>
+						<div class="d-flex align-items-start gap-2">
+							<span
+								class="badge bg-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
+								style="width: 1.5rem; height: 1.5rem; font-size: 0.75rem">
+								4
+							</span>
+							<span style="font-size: 1.2rem">
+								Thanh toán và hoàn tất mua vé
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		}
+	</div>
+	<div class="card border-0 shadow-sm mb-4">
+		<div class="card-body p-4">
+			<div class="mb-4">
+				<label
+					class="form-label fw-semibold text-dark d-flex align-items-center gap-2"
+					style="font-size: 1.2rem">
+					<i class="fa-solid fa-route text-primary"></i>
+					Chọn ga đến
+				</label>
+				<div class="row g-3">
+					@foreach (var route in Model.AvailableRoutes) {
+					<div class="col-md-4">
+						<form method="post" asp-page-handler="SelectRoute">
+							<input type="hidden" name="routeId" value="@route.RouteId" />
+							<button
+								type="submit"
+								class="btn btn-outline-primary btn-kiosk w-100 shadow-sm">
+								<div class="fw-bold">@route.DestinationName</div>
+								<hr />
+								<div class="text-danger">@route.Price.ToString("N0") VNĐ</div>
+							</button>
+						</form>
+					</div>
+					}
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

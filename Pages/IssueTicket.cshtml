@@ -9,8 +9,7 @@ ViewData["Title"] = "Phát hành vé";
 		<div
 			class="spinner-grow text-success"
 			role="status"
-			style="width: 3rem; height: 3rem"
-		></div>
+			style="width: 3rem; height: 3rem"></div>
 		<h2 class="mt-3 fw-bold text-success">ĐANG IN VÉ...</h2>
 		<p>Vui lòng đợi trong giây lát và nhận vé tại khe bên dưới.</p>
 	</div>
@@ -18,23 +17,30 @@ ViewData["Title"] = "Phát hành vé";
 	<div id="ticketResult" style="display: none">
 		<div
 			class="card mx-auto shadow-lg"
-			style="max-width: 450px; border: 2px dashed #333"
-		>
+			style="max-width: 450px; border: 2px dashed #333">
 			<div class="card-body p-4 text-start" style="background: #fffbe6">
 				<div class="text-center mb-3">
 					<h5 class="fw-bold border-bottom pb-2">METRO BẾN THÀNH - TICKET</h5>
 				</div>
 
-				<p><strong>Ngày:</strong> @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</p>
-				<p><strong>Số lượng:</strong> @Model.TicketQty vé</p>
-				<p><strong>Tổng tiền:</strong> @Model.TotalPaid.ToString("N0") VNĐ</p>
+				<p>
+					<strong>Ngày:</strong>
+					@DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+				</p>
+				<p>
+					<strong>Số lượng:</strong>
+					@Model.TicketQty vé
+				</p>
+				<p>
+					<strong>Tổng tiền:</strong>
+					@Model.TotalPaid.ToString("N0") VNĐ
+				</p>
 
 				<div class="text-center mt-4">
 					<p class="mb-1 fw-bold">MÃ VẠCH TRUY CẬP</p>
 					<img
 						class="p-3 fs-3 w-100"
-						src="https://quickchart.io/barcode?type=hibccode39&text=@Model.Barcode"
-					/>
+						src="https://quickchart.io/barcode?type=hibccode39&text=@Model.Barcode" />
 					<small class="text-muted">Dùng mã này để qua cổng kiểm soát</small>
 				</div>
 			</div>
@@ -42,12 +48,12 @@ ViewData["Title"] = "Phát hành vé";
 
 		<div class="mt-5">
 			<div class="alert alert-success">
-				<i class="bi bi-check-circle-fill"></i> Giao dịch hoàn tất. Cảm ơn quý
-				khách!
+				<i class="bi bi-check-circle-fill"></i>
+				Giao dịch hoàn tất. Cảm ơn quý khách!
 			</div>
-			<a asp-page="./Index" class="btn btn-primary btn-lg px-5 shadow"
-				>KẾT THÚC</a
-			>
+			<a asp-page="./Index" class="btn btn-primary btn-lg px-5 shadow">
+				KẾT THÚC
+			</a>
 		</div>
 	</div>
 </div>

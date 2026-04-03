@@ -7,8 +7,7 @@
 <div class="container text-center">
 	<div
 		class="card shadow-lg border-0 mx-auto"
-		style="max-width: 600px; background: #f8f9fa"
-	>
+		style="max-width: 600px; background: #f8f9fa">
 		<div class="card-header bg-dark text-white py-3">
 			<h4 class="mb-0">THANH TOÁN THẺ TÍN DỤNG</h4>
 		</div>
@@ -22,10 +21,10 @@
 				</p>
 
 				<div class="alert alert-secondary mt-4">
-					<span class="fs-4"
-						>Số tiền:
-						<strong>@Model.TotalAmount.ToString("N0") VNĐ</strong></span
-					>
+					<span class="fs-4">
+						Số tiền:
+						<strong>@Model.TotalAmount.ToString("N0") VNĐ</strong>
+					</span>
 					<br />
 					<small>Số lượng: @Model.Quantity vé</small>
 				</div>
@@ -35,8 +34,7 @@
 				<div
 					class="spinner-border text-primary"
 					role="status"
-					style="width: 4rem; height: 4rem"
-				>
+					style="width: 4rem; height: 4rem">
 					<span class="visually-hidden">Loading...</span>
 				</div>
 				<h3 class="mt-4">ĐANG XÁC THỰC GIAO DỊCH...</h3>
@@ -49,14 +47,13 @@
 				<button
 					type="submit"
 					id="btnSimulate"
-					class="btn btn-primary btn-lg w-100 fw-bold py-3 shadow"
-				>
+					class="btn btn-primary btn-lg w-100 fw-bold py-3 shadow">
 					GIẢ LẬP ĐƯA THẺ VÀO (DEMO)
 				</button>
 			</form>
-			<a asp-page="./SelectPayment" class="btn btn-link mt-3"
-				>Hủy bỏ giao dịch</a
-			>
+			<a asp-page="./SelectPayment" class="btn btn-link mt-3">
+				Hủy bỏ giao dịch
+			</a>
 		</div>
 	</div>
 </div>

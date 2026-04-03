@@ -19,16 +19,15 @@
 				<img
 					src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=TicketPayment_@Model.TotalAmount"
 					alt="QR Code Thanh Toán"
-					class="img-fluid"
-				/>
+					class="img-fluid" />
 			</div>
 
 			<div class="alert alert-warning py-2">
 				<h5 class="mb-1">
 					Tổng tiền:
-					<span class="text-danger fw-bold"
-						>@Model.TotalAmount.ToString("N0") VNĐ</span
-					>
+					<span class="text-danger fw-bold">
+						@Model.TotalAmount.ToString("N0") VNĐ
+					</span>
 				</h5>
 				<small>Vé: @Model.DestinationName | Số lượng: @Model.Quantity</small>
 			</div>
@@ -38,11 +37,12 @@
 					id="paymentTimer"
 					class="progress-bar progress-bar-striped progress-bar-animated"
 					role="progressbar"
-					style="width: 100%"
-				></div>
+					style="width: 100%"></div>
 			</div>
 			<p class="small text-muted">
-				Giao dịch sẽ hết hạn sau <span id="timeLeft">60</span> giây
+				Giao dịch sẽ hết hạn sau
+				<span id="timeLeft">60</span>
+				giây
 			</p>
 		</div>
 
@@ -50,16 +50,15 @@
 			<form method="post" asp-page-handler="Confirm">
 				<button
 					type="submit"
-					class="btn btn-success btn-lg w-100 fw-bold shadow-sm"
-				>
+					class="btn btn-success btn-lg w-100 fw-bold shadow-sm">
 					XÁC NHẬN ĐÃ QUÉT MÃ
 				</button>
 			</form>
 			<a
 				asp-page="./SelectPayment"
-				class="btn btn-link text-decoration-none mt-2"
-				>Hủy giao dịch</a
-			>
+				class="btn btn-link text-decoration-none mt-2">
+				Hủy giao dịch
+			</a>
 		</div>
 	</div>
 </div>

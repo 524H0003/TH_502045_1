@@ -4,116 +4,136 @@
     ViewData["Title"] = "Thanh toán";
 }
 
-<div class="container text-center mt-5">
-	<div class="alert alert-dark shadow">
-		<h2 class="fw-bold">XÁC NHẬN VÉ METRO: @Model.Destication</h2>
-		<hr />
-		<div class="row fs-4">
-			<div class="col-6 text-end">Giá đơn vị:</div>
-			<div class="col-6 text-start text-primary">
-				<span id="unitPrice">@Model.UnitPrice</span>
-				VNĐ
-			</div>
-		</div>
-	</div>
+<div class="container mt-4" style="max-width: 600px;">
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-4">
+            <h5 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                <i class="fa-solid fa-ticket text-primary"></i>Thông tin vé
+            </h5>
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="p-3 rounded" style="background: linear-gradient(135deg, #f0f4ff, #e8f4f8)">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="text-center">
+                                <span class="text-muted d-block small">Ga đến</span>
+                                <div class="fw-bold fs-5" style="color: #dc3545">
+                                    <i class="fa-solid fa-location-dot me-2"></i>@Model.Destication
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 my-2">
+                    <div class="d-flex align-items-center justify-content-between bg-light p-2 rounded border">
+                        <span class="text-muted ps-2">Số lượng vé:</span>
+                        <div class="d-flex align-items-center gap-3">
+                            <button type="button" class="btn btn-sm btn-outline-danger rounded-circle btn-update" data-type="minus">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <span id="quantityDisplay" class="fw-bold fs-5">@Model.Quantity</span>
+                            <button type="button" class="btn btn-sm btn-outline-success rounded-circle btn-update" data-type="plus">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-	<div class="card my-4 border-0 shadow-sm">
-		<div class="card-body bg-light">
-			<h4 class="mb-3 text-uppercase">Số lượng vé</h4>
-			<div class="d-flex justify-content-center align-items-center">
-				<button
-					type="button"
-					class="btn btn-danger btn-lg rounded-circle btn-update"
-					data-type="minus">
-					<i class="bi bi-dash-lg"></i>
-				</button>
+                <div class="col-6">
+                    <div class="text-muted" style="font-size: 0.8rem">Đơn giá</div>
+                    <div class="fw-semibold"><span id="unitPrice">@Model.UnitPrice</span> VND</div>
+                </div>
+                <div class="col-6 text-end">
+                    <div class="text-muted" style="font-size: 0.8rem">Tổng tiền</div>
+                    <div class="fw-bold text-primary fs-4">
+                        <span id="totalDisplay"></span> VND
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-				<input
-					type="number"
-					id="quantityInput"
-					asp-for="Quantity"
-					class="form-control mx-4 text-center fw-bold fs-2"
-					style="width: 120px; border: 3px solid #0d6efd"
-					readonly />
+    <form method="post" id="paymentForm">
+        <input type="hidden" id="quantityInput" asp-for="Quantity" />
+        <input type="hidden" id="paymentMethodInput" name="paymentMethod" value="EWallet" />
 
-				<button
-					type="button"
-					class="btn btn-success btn-lg rounded-circle btn-update"
-					data-type="plus">
-					<i class="bi bi-plus-lg"></i>
-				</button>
-			</div>
-		</div>
-	</div>
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body p-4">
+                <h5 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-credit-card text-primary"></i>Phương thức thanh toán
+                </h5>
+                <div class="d-flex flex-column gap-3">
+                    <div class="payment-option p-3 rounded border-2 d-flex align-items-center gap-3 border bg-white" 
+                         data-value="CreditCard" style="cursor: pointer; transition: all 0.2s ease">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 bg-light text-secondary" style="width: 3rem; height: 3rem">
+                            <i class="fa-solid fa-credit-card fs-5"></i>
+                        </div>
+                        <div class="d-flex flex-column gap-0 flex-grow-1">
+                            <div class="fw-semibold">Thẻ tín dụng / ghi nợ</div>
+                            <small class="text-muted">Visa, Mastercard, JCB</small>
+                        </div>
+                        <i class="fa-solid fa-check-circle check-icon d-none text-primary"></i>
+                    </div>
 
-	<div class="mb-5">
-		<h3 class="text-muted">Tổng thanh toán:</h3>
-		<h1 class="display-3 fw-bold text-danger">
-			<span id="totalDisplay">@Model.TotalAmount.ToString("N0")</span>
-			<small>VNĐ</small>
-		</h1>
-	</div>
+                    <div class="payment-option p-3 rounded border-2 d-flex align-items-center gap-3 border bg-white" 
+                         id="defaultPayment" data-value="EWallet" style="cursor: pointer; transition: all 0.2s ease">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 bg-light text-secondary" style="width: 3rem; height: 3rem">
+                            <i class="fa-solid fa-wallet fs-5"></i>
+                        </div>
+                        <div class="d-flex flex-column gap-0 flex-grow-1">
+                            <div class="fw-semibold">Ví điện tử</div>
+                            <small class="text-muted">MoMo, ZaloPay, VNPay</small>
+                        </div>
+                        <i class="fa-solid fa-check-circle check-icon d-none text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	<div class="row g-4">
-		<div class="col-md-6">
-			<form method="post">
-				<input type="hidden" name="paymentMethod" value="CreditCard" />
-				<input type="hidden" name="Quantity" class="final-qty" value="1" />
-				<button
-					type="submit"
-					class="btn btn-outline-dark w-100 py-4 fs-3 shadow">
-					<i class="bi bi-credit-card"></i>
-					THẺ TÍN DỤNG
-				</button>
-			</form>
-		</div>
-		<div class="col-md-6">
-			<form method="post">
-				<input type="hidden" name="paymentMethod" value="QRCode" />
-				<input type="hidden" name="Quantity" class="final-qty" value="1" />
-				<button
-					type="submit"
-					class="btn btn-outline-primary w-100 py-4 fs-3 shadow">
-					<i class="bi bi-qr-code"></i>
-					QUÉT MÃ QR
-				</button>
-			</form>
-		</div>
-	</div>
+        <div class="d-flex gap-3 mb-5">
+            <a asp-page="./Index" class="btn btn-outline-secondary rounded-pill flex-grow-1 d-flex align-items-center justify-content-center gap-2 py-3">
+                <i class="fa-solid fa-arrow-left"></i>Quay lại
+            </a>
+            <button type="submit" class="btn btn-primary rounded-pill flex-grow-1 d-flex align-items-center justify-content-center gap-2 py-3 shadow-sm">
+                <i class="fa-solid fa-check-circle"></i>Xác nhận mua vé
+            </button>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-	$(document).ready(function () {
-		// Lấy giá vé đơn vị từ Model (xóa dấu phân cách nếu có)
-		const unitPrice = parseInt($("#unitPrice").text().replace(/,/g, ""));
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".btn-update").click(function () {
+                let type = $(this).data("type");
+                let currentQty = parseInt($("#quantityDisplay").text());
+                let newQty = currentQty;
 
-		$(".btn-update").click(function () {
-			let type = $(this).data("type");
-			let input = $("#quantityInput");
-			let currentQty = parseInt(input.val());
-			let newQty = currentQty;
+                if (type === "plus" && currentQty < 10) newQty = currentQty + 1;
+                else if (type === "minus" && currentQty > 1) newQty = currentQty - 1;
 
-			if (type === "plus" && currentQty < 10) {
-				newQty = currentQty + 1;
-			} else if (type === "minus" && currentQty > 1) {
-				newQty = currentQty - 1;
-			}
+                $("#quantityDisplay").text(newQty);
+                $("#quantityInput").val(newQty);
+                
+                let total = newQty * @Model.UnitPrice;
+                $("#totalDisplay").text(total.toLocaleString("vi-VN"));
+            });
 
-			// 1. Cập nhật giá trị hiển thị ở input
-			input.val(newQty);
+            $(".payment-option").click(function () {
+                $(".payment-option").removeClass("border-primary bg-primary bg-opacity-10 active").addClass("bg-white");
+                $(".check-badge").remove();
+                $(".check-icon").addClass("d-none");
 
-			// 2. Cập nhật các input ẩn trong form để gửi về Server
-			$(".final-qty").val(newQty);
-
-			// 3. Tính toán và hiển thị tổng tiền mới (Response Time tối ưu)
-			let total = newQty * unitPrice;
-			$("#totalDisplay").text(total.toLocaleString("vi-VN"));
-
-			// Hiệu ứng nhẹ khi thay đổi số tiền
-			$("#totalDisplay").fadeOut(100).fadeIn(100);
-		});
-	});
-</script>
+                $(this).addClass("border-primary bg-primary bg-opacity-10 active").removeClass("bg-white");
+                $(this).append('<span class="badge bg-primary rounded-pill px-3 py-2 check-badge"><i class="fa-solid fa-check me-1"></i>Đã chọn</span>');
+                
+                let method = $(this).data("value");
+                $("#paymentMethodInput").val(method);
+            });
+            
+            $(".payment-option[data-value='EWallet']").click();
+            $("#totalDisplay").text((@Model.TotalAmount).toLocaleString("vi-VN"));
+        });
+    </script>
 }

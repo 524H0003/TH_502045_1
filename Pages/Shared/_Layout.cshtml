@@ -1,100 +1,70 @@
 ﻿<!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BenThanh Metro Smart Ticketing</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
-        /* Giả lập giao diện phần cứng máy bán vé (Kiosk Mode) */
-        body {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: 100dvh;
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>@ViewData["Title"] - BenThanh Metro Smart Ticketing</title>
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+		/>
+	</head>
+	<body>
+		<header class="bg-primary text-white shadow-sm">
+			<div
+				class="container-fluid d-flex align-items-center justify-content-between py-3 px-4"
+			>
+				<a
+					class="d-flex align-items-center gap-3 text-decoration-none text-white"
+					href="./welcome.html"
+					style="cursor: pointer"
+				>
+					<div
+						class="rounded-circle d-flex align-items-center justify-content-center bg-white bg-opacity-25"
+						style="width: 3rem; height: 3rem"
+					>
+						<i class="fa-solid fa-train-subway text-white fs-5"></i>
+					</div>
+					<div>
+						<h1 class="fs-5 fw-bold m-0">Metro TPHCM</h1>
+						<small class="text-white text-opacity-75" style="font-size: 0.8rem"
+							>Hệ thống mua vé tàu điện</small
+						>
+					</div></a
+				><button
+					class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 px-3 py-1"
+					type="button"
+				>
+					<i class="fa-solid fa-globe"></i><span class="fw-semibold">EN</span>
+				</button>
+			</div>
+		</header>
+		<div class="container h-100">
+			<div class="row justify-content-center h-100">
+				<div class="col-md-10 kiosk-container flex-column d-flex">
+					<header class="kiosk-header">
+						<h1 class="display-5 fw-bold">METRO BẾN THÀNH - SUỐI TIÊN</h1>
+						<p class="mb-0">Smart Ticketing Vendor Machine v1.0</p>
+					</header>
 
-        }
+					<main role="main" class="kiosk-screen flex-grow-1">
+						@RenderBody()
+					</main>
 
-        .kiosk-container {
-            border: 15px solid #bdc3c7; /* Viền ngoài máy ATM */
-            border-radius: 20px;
-            background-color: #ffffff;
-            color: #333;
-            min-height: 80vh;
-            margin-top: 20px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            overflow: hidden;
-            padding: 0px;
-            margin: auto 0px;
-        }
+					<footer class="system-status-bar d-flex justify-content-between">
+						<div>
+							<strong>Trạng thái:</strong>
+							<span class="text-success">Sẵn sàng phục vụ</span>
+						</div>
+						<div>@DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</div>
+					</footer>
+				</div>
+			</div>
+		</div>
 
-        .kiosk-header {
-            background: linear-gradient(90deg, #0055a4 0%, #003366 100%); /* Màu đặc trưng Metro */
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 5px solid #f1c40f;
-        }
-
-        .kiosk-screen {
-            padding: 30px;
-            min-height: 500px;
-            height: 100%;
-        }
-
-        .system-status-bar {
-            background: #f8f9fa;
-            border-top: 1px solid #dee2e6;
-            padding: 10px 20px;
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        /* Hiệu ứng nút bấm lớn cho màn hình cảm ứng */
-        .btn-kiosk {
-            padding: 20px;
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            transition: transform 0.1s;
-        }
-
-        .btn-kiosk:active {
-            transform: scale(0.95);
-        }
-    </style>
-</head>
-<body>
-    <div class="container h-100">
-        <div class="row justify-content-center h-100">
-            <div class="col-md-10 kiosk-container flex-column d-flex">
-                
-                <header class="kiosk-header">
-                    <h1 class="display-5 fw-bold">METRO BẾN THÀNH - SUỐI TIÊN</h1>
-                    <p class="mb-0">Smart Ticketing Vendor Machine v1.0</p> 
-                </header>
-
-                <main role="main" class="kiosk-screen flex-grow-1">
-                    @RenderBody()
-                </main>
-
-                <footer class="system-status-bar d-flex justify-content-between">
-                    <div>
-                        <strong>Trạng thái:</strong> <span class="text-success">Sẵn sàng phục vụ</span> 
-                    </div>
-                    <div>
-                        @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
-                    </div>
-                </footer>
-
-            </div>
-        </div>
-    </div>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+		<script src="~/lib/jquery/dist/jquery.min.js"></script>
+		<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		@await RenderSectionAsync("Scripts", required: false)
+	</body>
 </html>

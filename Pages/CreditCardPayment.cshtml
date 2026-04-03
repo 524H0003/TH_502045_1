@@ -5,52 +5,70 @@
 }
 
 <div class="container text-center">
-    <div class="card shadow-lg border-0 mx-auto" style="max-width: 600px; background: #f8f9fa;">
-        <div class="card-header bg-dark text-white py-3">
-            <h4 class="mb-0">THANH TOÁN THẺ TÍN DỤNG</h4>
-        </div>
-        
-        <div class="card-body p-5">
-            <div id="instructionArea">
-                <i class="bi bi-credit-card-2-front display-1 text-primary mb-4"></i>
-                <h3 class="fw-bold">VUI LÒNG ĐƯA THẺ VÀO KHE ĐỌC</h3>
-                <p class="text-muted fs-5">Hệ thống đang chờ kết nối với thẻ của bạn...</p>
-                
-                <div class="alert alert-secondary mt-4">
-                    <span class="fs-4">Số tiền: <strong>@Model.TotalAmount.ToString("N0") VNĐ</strong></span>
-                    <br/>
-                    <small>Số lượng: @Model.Quantity vé</small>
-                </div>
-            </div>
+	<div
+		class="card shadow-lg border-0 mx-auto"
+		style="max-width: 600px; background: #f8f9fa"
+	>
+		<div class="card-header bg-dark text-white py-3">
+			<h4 class="mb-0">THANH TOÁN THẺ TÍN DỤNG</h4>
+		</div>
 
-            <div id="processingArea" style="display:none;">
-                <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-                <h3 class="mt-4">ĐANG XÁC THỰC GIAO DỊCH...</h3>
-                <p>Vui lòng không rút thẻ ra khỏi máy.</p>
-            </div>
-        </div>
+		<div class="card-body p-5">
+			<div id="instructionArea">
+				<i class="bi bi-credit-card-2-front display-1 text-primary mb-4"></i>
+				<h3 class="fw-bold">VUI LÒNG ĐƯA THẺ VÀO KHE ĐỌC</h3>
+				<p class="text-muted fs-5">
+					Hệ thống đang chờ kết nối với thẻ của bạn...
+				</p>
 
-        <div class="card-footer py-4">
-            <form method="post" asp-page-handler="Process" id="paymentForm">
-                <button type="submit" id="btnSimulate" class="btn btn-primary btn-lg w-100 fw-bold py-3 shadow">
-                    GIẢ LẬP ĐƯA THẺ VÀO (DEMO)
-                </button>
-            </form>
-            <a asp-page="./SelectPayment" class="btn btn-link mt-3">Hủy bỏ giao dịch</a>
-        </div>
-    </div>
+				<div class="alert alert-secondary mt-4">
+					<span class="fs-4"
+						>Số tiền:
+						<strong>@Model.TotalAmount.ToString("N0") VNĐ</strong></span
+					>
+					<br />
+					<small>Số lượng: @Model.Quantity vé</small>
+				</div>
+			</div>
+
+			<div id="processingArea" style="display: none">
+				<div
+					class="spinner-border text-primary"
+					role="status"
+					style="width: 4rem; height: 4rem"
+				>
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<h3 class="mt-4">ĐANG XÁC THỰC GIAO DỊCH...</h3>
+				<p>Vui lòng không rút thẻ ra khỏi máy.</p>
+			</div>
+		</div>
+
+		<div class="card-footer py-4">
+			<form method="post" asp-page-handler="Process" id="paymentForm">
+				<button
+					type="submit"
+					id="btnSimulate"
+					class="btn btn-primary btn-lg w-100 fw-bold py-3 shadow"
+				>
+					GIẢ LẬP ĐƯA THẺ VÀO (DEMO)
+				</button>
+			</form>
+			<a asp-page="./SelectPayment" class="btn btn-link mt-3"
+				>Hủy bỏ giao dịch</a
+			>
+		</div>
+	</div>
 </div>
 
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-            $("#paymentForm").submit(function () {
-                $("#instructionArea").hide();
-                $("#btnSimulate").hide();
-                $("#processingArea").show();
-            });
-        });
-    </script>
+<script>
+	$(document).ready(function () {
+		$("#paymentForm").submit(function () {
+			$("#instructionArea").hide();
+			$("#btnSimulate").hide();
+			$("#processingArea").show();
+		});
+	});
+</script>
 }

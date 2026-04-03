@@ -4,40 +4,40 @@ using TH_502045_1.Models;
 
 namespace TH_502045_1.Pages
 {
-    public class QRCodePaymentModel : PageModel
-    {
-        private readonly AppDBContext _context;
+	public class QRCodePaymentModel : PageModel
+	{
+		private readonly AppDBContext _context;
 
-        public QRCodePaymentModel(AppDBContext context) => _context = context;
+		public QRCodePaymentModel(AppDBContext context) => _context = context;
 
-        public decimal TotalAmount { get; set; }
-        public string? DestinationName { get; set; }
-        public int Quantity { get; set; }
+		public decimal TotalAmount { get; set; }
+		public string? DestinationName { get; set; }
+		public int Quantity { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
-        {
-            var routeId = HttpContext.Session.GetInt32("SelectedRouteId");
-            var route = await _context.Routes.FindAsync(routeId);
+		public async Task<IActionResult> OnGetAsync()
+		{
+			var routeId = HttpContext.Session.GetInt32("SelectedRouteId");
+			var route = await _context.Routes.FindAsync(routeId);
 
-            int quantity = HttpContext.Session.GetInt32("TicketQuantity") ?? 0;
+			int quantity = HttpContext.Session.GetInt32("TicketQuantity") ?? 0;
 
-            if (route == null || quantity == 0)
-            {
-                return RedirectToPage("./Index");
-            }
+			if (route == null || quantity == 0)
+			{
+				return RedirectToPage("./Index");
+			}
 
-            Quantity = quantity;
+			Quantity = quantity;
 
-            TotalAmount = route.Price * Quantity;
+			TotalAmount = route.Price * Quantity;
 
-            DestinationName = route.DestinationName;
+			DestinationName = route.DestinationName;
 
-            return Page();
-        }
+			return Page();
+		}
 
-        public IActionResult OnPostConfirm()
-        {
-            return RedirectToPage("./IssueTicket");
-        }
-    }
+		public IActionResult OnPostConfirm()
+		{
+			return RedirectToPage("./IssueTicket");
+		}
+	}
 }

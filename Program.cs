@@ -9,14 +9,14 @@ builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddDbContext<AppDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
+	options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
 );
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(5);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
+	options.IdleTimeout = TimeSpan.FromMinutes(5);
+	options.Cookie.HttpOnly = true;
+	options.Cookie.IsEssential = true;
 });
 
 var app = builder.Build();
@@ -24,7 +24,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
+	app.UseExceptionHandler("/Error");
 }
 
 app.UseRouting();

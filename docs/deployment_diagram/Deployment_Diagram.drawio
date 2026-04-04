@@ -1,0 +1,47 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Deployment_Diagram" id="MsduNcfBDsiMZfCjCE7z">
+    <mxGraphModel dx="921" dy="671" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-10" edge="1" parent="1" source="Ut5BAA7hp6Dg9YEc_ThV-22" style="endArrow=none;html=1;rounded=0;entryX=0.009;entryY=0.519;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0;exitDx=240;exitDy=177.5;exitPerimeter=0;startArrow=none;labelBackgroundColor=none;" target="Ut5BAA7hp6Dg9YEc_ThV-18" value="+HTTPS">
+          <mxGeometry relative="1" x="0.0163" y="-15" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-11" edge="1" parent="1" source="Ut5BAA7hp6Dg9YEc_ThV-18" style="endArrow=none;html=1;rounded=0;entryX=0.008;entryY=0.519;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0;exitDx=240;exitDy=177.5;exitPerimeter=0;startArrow=none;labelBackgroundColor=none;" target="Ut5BAA7hp6Dg9YEc_ThV-26" value="+ORM connection">
+          <mxGeometry relative="1" x="0.0143" y="-15" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-18" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;align=center;verticalAlign=top;spacingTop=10;size=15;" value="&amp;laquo;device&amp;raquo;&lt;br&gt;:Web Server" vertex="1">
+          <mxGeometry height="340" width="240" x="560" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-19" parent="Ut5BAA7hp6Dg9YEc_ThV-18" style="shape=component;align=center;verticalAlign=middle;spacingLeft=15;whiteSpace=wrap;html=1;" value="Models" vertex="1">
+          <mxGeometry height="50" width="155" x="42.5" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-20" parent="Ut5BAA7hp6Dg9YEc_ThV-18" style="shape=component;align=center;verticalAlign=middle;spacingLeft=15;whiteSpace=wrap;html=1;" value="Razor View" vertex="1">
+          <mxGeometry height="50" width="155" x="42.5" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-21" parent="Ut5BAA7hp6Dg9YEc_ThV-18" style="shape=component;align=center;verticalAlign=middle;spacingLeft=15;whiteSpace=wrap;html=1;" value="Razor Controller" vertex="1">
+          <mxGeometry height="50" width="155" x="42.5" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-22" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;align=center;verticalAlign=top;spacingTop=10;size=15;" value="«device»&lt;br&gt;:Web Client" vertex="1">
+          <mxGeometry height="340" width="240" x="200" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-26" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;align=center;verticalAlign=top;spacingTop=10;size=15;" value="«device»&lt;br&gt;:Database Server" vertex="1">
+          <mxGeometry height="340" width="240" x="930" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-28" parent="Ut5BAA7hp6Dg9YEc_ThV-26" style="shape=component;align=center;verticalAlign=middle;spacingLeft=15;whiteSpace=wrap;html=1;" value="MSSQL database" vertex="1">
+          <mxGeometry height="50" width="165" x="37.5" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-30" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;align=center;verticalAlign=top;spacingTop=10;size=15;" value="&amp;laquo;executionEnvironment&amp;raquo;&lt;br&gt;:Web Browser" vertex="1">
+          <mxGeometry height="203.56999999999996" width="199.09" x="230" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Ut5BAA7hp6Dg9YEc_ThV-31" parent="Ut5BAA7hp6Dg9YEc_ThV-30" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=center;verticalAlign=bottom;spacingBottom=15;size=15;" value=":HTML" vertex="1">
+          <mxGeometry height="101.78499999999998" width="88.48444444444443" x="55.30277777777778" y="71.24949999999998" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

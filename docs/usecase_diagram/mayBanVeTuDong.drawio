@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="OCErwynkmIm3cEyIg0qs">
+    <mxGraphModel dx="1336" dy="973" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HH4f48rwoWIVmagOccGk-1" parent="1" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" value="Máy bán vé tự động (TVM) - Metro Bến Thành" vertex="1">
+          <mxGeometry height="380" width="500" x="360" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-3" parent="HH4f48rwoWIVmagOccGk-1" style="ellipse;whiteSpace=wrap;html=1;" value="Chọn điểm đến" vertex="1">
+          <mxGeometry height="50" width="150" x="40" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-4" parent="HH4f48rwoWIVmagOccGk-1" style="ellipse;whiteSpace=wrap;html=1;" value="Tính toán giá vé" vertex="1">
+          <mxGeometry height="50" width="150" x="300" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-8" parent="HH4f48rwoWIVmagOccGk-1" style="ellipse;whiteSpace=wrap;html=1;" value="Phát hành vé" vertex="1">
+          <mxGeometry height="50" width="150" x="30" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-5" parent="HH4f48rwoWIVmagOccGk-1" style="ellipse;whiteSpace=wrap;html=1;" value="Chọn phương thức&#xa;thanh toán" vertex="1">
+          <mxGeometry height="60" width="150" x="40" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-6" parent="HH4f48rwoWIVmagOccGk-1" style="ellipse;whiteSpace=wrap;html=1;" value="Thanh toán bằng&#xa;Thẻ tín dụng" vertex="1">
+          <mxGeometry height="50" width="150" x="300" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-7" parent="HH4f48rwoWIVmagOccGk-1" style="ellipse;whiteSpace=wrap;html=1;" value="Thanh toán bằng&#xa;QR Code" vertex="1">
+          <mxGeometry height="50" width="150" x="300" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-20" edge="1" parent="HH4f48rwoWIVmagOccGk-1" source="HH4f48rwoWIVmagOccGk-6" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;" target="HH4f48rwoWIVmagOccGk-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-21" edge="1" parent="HH4f48rwoWIVmagOccGk-1" source="HH4f48rwoWIVmagOccGk-7" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;" target="HH4f48rwoWIVmagOccGk-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4HolZOukxlY7j4Bd7ShJ-4" edge="1" parent="HH4f48rwoWIVmagOccGk-1" source="HH4f48rwoWIVmagOccGk-4" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="HH4f48rwoWIVmagOccGk-3" value="&amp;lt;include&amp;gt;">
+          <mxGeometry relative="1" x="0.0811" y="-3" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="250" y="361" as="sourcePoint" />
+            <mxPoint x="452" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4HolZOukxlY7j4Bd7ShJ-7" edge="1" parent="HH4f48rwoWIVmagOccGk-1" source="HH4f48rwoWIVmagOccGk-6" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="HH4f48rwoWIVmagOccGk-8" value="&amp;lt;include&amp;gt;">
+          <mxGeometry relative="1" x="0.0811" y="-3" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="310" y="471" as="sourcePoint" />
+            <mxPoint x="512" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4HolZOukxlY7j4Bd7ShJ-8" edge="1" parent="HH4f48rwoWIVmagOccGk-1" source="HH4f48rwoWIVmagOccGk-7" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" target="HH4f48rwoWIVmagOccGk-8" value="&amp;lt;include&amp;gt;">
+          <mxGeometry relative="1" x="0.0022" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="500" y="519" as="sourcePoint" />
+            <mxPoint x="666" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-12" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Hành khách" vertex="1">
+          <mxGeometry height="60" width="30" x="240" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-13" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Ngân hàng" vertex="1">
+          <mxGeometry height="60" width="30" x="920" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-14" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Cổng thanh toán" vertex="1">
+          <mxGeometry height="60" width="30" x="920" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-17" edge="1" parent="1" source="HH4f48rwoWIVmagOccGk-12" style="edgeStyle=none;rounded=0;html=1;endArrow=none;endFill=0;" target="HH4f48rwoWIVmagOccGk-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-18" edge="1" parent="1" source="HH4f48rwoWIVmagOccGk-12" style="edgeStyle=none;rounded=0;html=1;endArrow=none;endFill=0;" target="HH4f48rwoWIVmagOccGk-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-25" edge="1" parent="1" source="HH4f48rwoWIVmagOccGk-6" style="edgeStyle=none;rounded=0;html=1;endArrow=none;endFill=0;" target="HH4f48rwoWIVmagOccGk-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HH4f48rwoWIVmagOccGk-26" edge="1" parent="1" source="HH4f48rwoWIVmagOccGk-7" style="edgeStyle=none;rounded=0;html=1;endArrow=none;endFill=0;" target="HH4f48rwoWIVmagOccGk-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
